@@ -26,10 +26,10 @@ const infantQuizRouter = require("./routes/infantQuiz");
 const wordRoutes = require("./routes/wordRoutes");
 const infantFactRouter = require("./routes/infantFact");
 const mainQuizRoute = require("./routes/mainQuiz/MainQuizRoute");
+const visionGame = require("./routes/game/visionGameRoute");
 
 const base = "/api/v1";
 
-app.use("/api/users", userRoutes);
 app.use("/api/treatments", treatmentRoutes);
 app.use("/api/doctors", doctorRoutes);
 app.use("/api/videoTutorial", videoTutorialRoutes);
@@ -45,8 +45,12 @@ app.use("/api/word", wordRoutes);
 app.use("/api/infantFact", infantFactRouter);
 
 // Quiz
-
 app.use(`/api/mainQuiz`, mainQuizRoute);
+//game
+app.use("/api/game", visionGame);
+
+//user
+app.use("/api/auth", require("./routes/authRoutes"));
 
 // Error Middleware
 const { notFound, errorHandler } = require("./Middlewares/errorMiddleware");
